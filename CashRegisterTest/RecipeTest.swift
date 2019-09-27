@@ -10,50 +10,38 @@ import XCTest
 
 class RecipeTest: XCTestCase {
 
+    var recipe: Recipe!
+    
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        recipe = Recipe(products: [])
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        recipe = nil
     }
 
     func testRecipeInitWithProducts() {
         let vine = Product(name: "vine", quantity: 4, price: 5000)
         let beer = Product(name: "beer", quantity: 2, price: 200)
         let products = [vine, beer]
-        let recipe = Recipe(products:products)
+        recipe = Recipe(products:products)
         
         XCTAssertEqual(products[0].name, recipe.products[0].name, "Names should be the same")
     }
     
+    func testReceipShoudGenerateSeparateLine() {
+        let expectedLine = "-------------------------------------------------------"
+        
+        XCTAssertEqual(recipe.addSeparateLine(), expectedLine, "Line should be the same")
+    }
+
     func testRecipeGeneateFormatedHeaders() {
     
-        let recipe = Recipe(products: [])
         let header = recipe.generateHeader()
         
         let expectedHeader = "Label of item  Quantity       Unit price     Total price    \n-------------------------------------------------------"
         XCTAssertEqual(header, expectedHeader, "Header should be the same")
     }
     
-//    fileprivate func addSeparateLine() -> String {
-//        return "-------------------------------------------------------"
-//    }
-//
-//    fileprivate func generateHeader() -> String {
-//        // headers formater
-//
-//        var result: String = ""
-//        let headers = ["Label of item", "Quantity", "Unit price", "Total price"]
-//        let formatedHeaders = headers.map { Formatter.formatString($0) }
-//
-//        for header in formatedHeaders {
-//            result += header
-//        }
-//        result += "\n"
-//        result += addSeparateLine()
-//
-//        return result
-//    }
 
 }
