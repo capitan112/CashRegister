@@ -1,5 +1,5 @@
 //
-//  Recipe.swift
+//  Receipt.swift
 //  CashRegister
 //
 //  Created by Oleksiy Chebotarov on 27/09/2019.
@@ -36,17 +36,17 @@ class Receipt {
     }
     
     func productsEncounter() -> [String] {
-        var productsInRecipe = [String]()
+        var productsInReceipt = [String]()
                 
         for product in products {
             let productName = formatter.addPaddingsAtEnd(to: product.name, padding: 15)
             let productQuantity = formatter.addPaddingsAtEnd(to: String(product.quantity), padding: 15)
             let productPrice = formatter.addPaddingsAtEnd(to: String(product.price), padding: 15)
 
-            productsInRecipe.append(productName + productQuantity + productPrice + product.summaryCostInRow())
+            productsInReceipt.append(productName + productQuantity + productPrice + product.summaryCostInRow())
         }
         
-        return productsInRecipe
+        return productsInReceipt
     }
     
     func generateOutput() {
@@ -58,6 +58,16 @@ class Receipt {
         
         print(addSeparateLine())
         
+    }
+    
+    func totalWithoutTaxes() -> Double {
+        var totalWithoutTaxes = 0.0
+        
+        for product in products {
+            totalWithoutTaxes += product.summaryCost()
+        }
+        
+        return totalWithoutTaxes
     }
     
     
