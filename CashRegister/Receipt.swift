@@ -11,33 +11,32 @@ import Foundation
 class Receipt {
     var products: [Product]
     var formatter: LineFormatter!
-    
+
     init(products: [Product]) {
         self.products = products
-        self.formatter = LineFormatter()
+        formatter = LineFormatter()
     }
-    
+
     func generateHeader() -> String {
-        
         var result: String = ""
         let headers = ["Label of item", "Quantity", "Unit price", "Total price"]
-        
+
         for header in headers {
             result += formatter.addPaddingsAtEnd(to: header, padding: 15)
         }
         result += "\n"
         result += addSeparateLine()
-        
+
         return result
     }
-    
+
     func addSeparateLine() -> String {
         return "-------------------------------------------------------"
     }
-    
+
     func productsEncounter() -> [String] {
         var productsInReceipt = [String]()
-                
+
         for product in products {
             let productName = formatter.addPaddingsAtEnd(to: product.name, padding: 15)
             let productQuantity = formatter.addPaddingsAtEnd(to: String(product.quantity), padding: 15)
@@ -45,32 +44,36 @@ class Receipt {
 
             productsInReceipt.append(productName + productQuantity + productPrice + product.summaryCostInRow())
         }
-        
+
         return productsInReceipt
     }
-    
+
     func generateOutput() {
         print(generateHeader())
-        
+
         for row in productsEncounter() {
             print(row)
         }
-        
+
         print(addSeparateLine())
-        
+        print(totalWithoutTaxesOutput())
     }
-    
+
     func totalWithoutTaxes() -> Double {
         var totalWithoutTaxes = 0.0
-        
+
         for product in products {
             totalWithoutTaxes += product.summaryCost()
         }
-        
+
         return totalWithoutTaxes
     }
-    
-    
+
+    func totalWithoutTaxesOutput() -> String {
+        let totalWithoutTaxesLine = "Total without taxes"
+
+        let formatedTotalWithoutTaxesLine = formatter.addPaddingsAtEnd(to: totalWithoutTaxesLine, padding: 45)
+
+        return formatedTotalWithoutTaxesLine + String(format: "%.2f", totalWithoutTaxes())
+    }
 }
-
-

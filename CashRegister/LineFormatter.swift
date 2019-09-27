@@ -9,7 +9,6 @@
 import Foundation
 
 class LineFormatter {
-
     func addPaddingsAtEnd(to string: String, padding: Int) -> String {
         let formatedString = string.padding(toLength: padding, withPad: " ", startingAt: 0)
 
