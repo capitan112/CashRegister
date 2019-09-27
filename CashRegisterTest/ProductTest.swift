@@ -21,13 +21,13 @@ class ProductTest: XCTestCase {
     }
 
     func testInitProductWithParamentParameters() {
-        XCTAssertNotNil(product)
+        XCTAssertNotNil(product, "Product should not be nil")
     }
     
     func testWhenGivenParametersItSetted() {        
-        XCTAssertEqual(product.name, "vine")
-        XCTAssertEqual(product.quantity, 4)
-        XCTAssertEqual(product.price, 5000)
+        XCTAssertEqual(product.name, "vine", "Names should be the same")
+        XCTAssertEqual(product.quantity, 4, "Quantity should be the same")
+        XCTAssertEqual(product.price, 5000, "Price should be the same")
     }
 
 }

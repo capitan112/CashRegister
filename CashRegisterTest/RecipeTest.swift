@@ -24,8 +24,36 @@ class RecipeTest: XCTestCase {
         let products = [vine, beer]
         let recipe = Recipe(products:products)
         
-        XCTAssertEqual(products[0].name, recipe.products[0].name)
+        XCTAssertEqual(products[0].name, recipe.products[0].name, "Names should be the same")
     }
-
+    
+    func testRecipeGeneateFormatedHeaders() {
+    
+        let recipe = Recipe(products: [])
+        let header = recipe.generateHeader()
+        
+        let expectedHeader = "Label of item  Quantity       Unit price     Total price    \n-------------------------------------------------------"
+        XCTAssertEqual(header, expectedHeader, "Header should be the same")
+    }
+    
+//    fileprivate func addSeparateLine() -> String {
+//        return "-------------------------------------------------------"
+//    }
+//
+//    fileprivate func generateHeader() -> String {
+//        // headers formater
+//
+//        var result: String = ""
+//        let headers = ["Label of item", "Quantity", "Unit price", "Total price"]
+//        let formatedHeaders = headers.map { Formatter.formatString($0) }
+//
+//        for header in formatedHeaders {
+//            result += header
+//        }
+//        result += "\n"
+//        result += addSeparateLine()
+//
+//        return result
+//    }
 
 }

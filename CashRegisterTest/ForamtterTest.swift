@@ -24,7 +24,7 @@ class ForamtterTest: XCTestCase {
         let title = "Label of item"
         let formatedTitle = formatter.addPaddingsAtEnd(to: title, padding: 15)
         
-        XCTAssertEqual(formatedTitle, "Label of item  ")
+        XCTAssertEqual(formatedTitle, "Label of item  ","Title should be formatted")
     }
     
     
@@ -33,7 +33,7 @@ class ForamtterTest: XCTestCase {
         
         let formatedHeaders = titles.map { formatter.addPaddingsAtEnd(to: $0, padding: 15) }
         let expectedResult = ["Label of item  ", "Quantity       ", "Unit price     ", "Total price    "]
-        XCTAssertEqual(formatedHeaders, expectedResult)
+        XCTAssertEqual(formatedHeaders, expectedResult, "Array of titles should be formatted" )
     }
 
 }

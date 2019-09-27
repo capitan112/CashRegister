@@ -16,8 +16,8 @@
 		48275900233E22C400E980A3 /* RecipeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482758FF233E22C400E980A3 /* RecipeTest.swift */; };
 		48275901233E22CD00E980A3 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482758FD233E22AD00E980A3 /* Recipe.swift */; };
 		48275903233E266D00E980A3 /* ForamtterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48275902233E266D00E980A3 /* ForamtterTest.swift */; };
-		48275905233E272900E980A3 /* LineFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48275904233E272900E980A3 /* LineFormatter.swift */; };
 		48275906233E274B00E980A3 /* LineFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48275904233E272900E980A3 /* LineFormatter.swift */; };
+		48275907233E326400E980A3 /* LineFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48275904233E272900E980A3 /* LineFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -99,8 +99,8 @@
 				482758F1233E1C1F00E980A3 /* CashRegisterTest.swift */,
 				482758F7233E1CF000E980A3 /* ProductTest.swift */,
 				482758FF233E22C400E980A3 /* RecipeTest.swift */,
-				482758F3233E1C1F00E980A3 /* Info.plist */,
 				48275902233E266D00E980A3 /* ForamtterTest.swift */,
+				482758F3233E1C1F00E980A3 /* Info.plist */,
 			);
 			path = CashRegisterTest;
 			sourceTree = "<group>";
@@ -204,7 +204,7 @@
 			files = (
 				482758FE233E22AD00E980A3 /* Recipe.swift in Sources */,
 				482758E5233E190600E980A3 /* main.swift in Sources */,
-				48275905233E272900E980A3 /* LineFormatter.swift in Sources */,
+				48275907233E326400E980A3 /* LineFormatter.swift in Sources */,
 				482758FB233E1DA400E980A3 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
