@@ -48,7 +48,7 @@ class Receipt {
         return productsInReceipt
     }
 
-    func generateOutput() {
+    func receiptOutput() {
         print(generateHeader())
 
         for row in productsEncounter() {
@@ -77,5 +77,8 @@ class Receipt {
         return formatedTotalWithoutTaxesLine + String(format: "%.2f", totalWithoutTaxes())
     }
     
+    func discountOutput() {
+        
+    }
     
 }

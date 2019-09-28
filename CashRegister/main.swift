@@ -23,4 +23,4 @@ products.append(beer)
 
 let sut = Receipt(products: products)
 
-sut.generateOutput()
+sut.receiptOutput()

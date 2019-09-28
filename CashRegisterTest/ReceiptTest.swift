@@ -53,7 +53,6 @@ class ReceiptTest: XCTestCase {
 
         let productsInRows = receipt.productsEncounter()
 
-        print(productsInRows)
         let firstRowsOfProducts = "vine           4.0            5000.0         20000.0"
         let secondRowsOfProducts = "beer           1.0            500.0          500.0"
 
@@ -72,7 +71,14 @@ class ReceiptTest: XCTestCase {
 
         let expectedLine = "Total without taxes                          20500.00"
 
-        XCTAssertEqual(receipt.totalWithoutTaxesOutput(), expectedLine, "Total cost line n receipt should be the same")
+        XCTAssertEqual(receipt.totalWithoutTaxesOutput(), expectedLine, "Total cost line in receipt should be the same")
     }
     
+    
+    func testProductInReceiptGenerateDiscountLine() {
+        receipt = Receipt(products: productsInReceipe())
+        let expectedLine = "Discount 10.00%                             -2050.00"
+        
+        XCTAssertEqual(receipt.discountOutput(), expectedLine, "Discount in receipt should be the same")
+    }
 }

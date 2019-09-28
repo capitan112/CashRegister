@@ -40,7 +40,7 @@ class Discount {
             break
         }
         
-        return 0
+        return (discount: discountRate, totalDiscount: totalCost * discountRate)
     }
 }
 
