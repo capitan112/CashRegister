@@ -9,7 +9,7 @@
 @testable import CashRegister
 import XCTest
 
-class DiscountTet: XCTestCase {
+class DiscountTest: XCTestCase {
     var discount: Discount!
 
     override func setUp() {
