@@ -53,7 +53,7 @@ class Receipt {
     func taxAmount() -> Double {
         let totalWithDiscount = totalWithoutTaxes() - discountAmount()
 
-        return tax.currentTax() * totalWithDiscount
+        return tax.taxAmount(of: totalWithDiscount)
     }
 
     // MARK: Generate part of receipt

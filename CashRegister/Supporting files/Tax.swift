@@ -20,6 +20,7 @@ protocol TaxProtocol {
     init(stateTax: StateTax)
     func taxInPercentage() -> String
     func currentTax() -> Double
+    func taxAmount(of number: Double) -> Double
 }
 
 class Tax: TaxProtocol {
@@ -35,5 +36,9 @@ class Tax: TaxProtocol {
 
     func currentTax() -> Double {
         return stateTax.rawValue
+    }
+
+    func taxAmount(of number: Double) -> Double {
+        return currentTax() * number
     }
 }
