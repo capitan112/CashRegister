@@ -74,4 +74,13 @@ class ReceiptTest: XCTestCase {
 
         XCTAssertEqual(receipt.totalWithoutTaxesOutput(), expectedLine, "Total cost line n receipt should be the same")
     }
+    
+    func testDiscountFromTotalCostShouldCalculating() {
+        receipt = Receipt(products: productsInReceipe())
+        
+        let totalCost = receipt.totalWithoutTaxes()
+        var discount = Discount()
+        let discount = discount.from(totalCost: totalCost)
+        
+    }
 }

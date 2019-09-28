@@ -76,4 +76,6 @@ class Receipt {
 
         return formatedTotalWithoutTaxesLine + String(format: "%.2f", totalWithoutTaxes())
     }
+    
+    
 }
