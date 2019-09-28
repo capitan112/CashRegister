@@ -18,6 +18,9 @@
 		48275903233E266D00E980A3 /* ForamtterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48275902233E266D00E980A3 /* ForamtterTest.swift */; };
 		48275906233E274B00E980A3 /* LineFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48275904233E272900E980A3 /* LineFormatter.swift */; };
 		48275907233E326400E980A3 /* LineFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48275904233E272900E980A3 /* LineFormatter.swift */; };
+		48275909233F2EC000E980A3 /* Discount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48275908233F2EC000E980A3 /* Discount.swift */; };
+		4827590A233F308300E980A3 /* Discount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48275908233F2EC000E980A3 /* Discount.swift */; };
+		4827590C233F493500E980A3 /* DiscountTet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4827590B233F493500E980A3 /* DiscountTet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,6 +47,8 @@
 		482758FF233E22C400E980A3 /* ReceiptTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptTest.swift; sourceTree = "<group>"; };
 		48275902233E266D00E980A3 /* ForamtterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForamtterTest.swift; sourceTree = "<group>"; };
 		48275904233E272900E980A3 /* LineFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineFormatter.swift; sourceTree = "<group>"; };
+		48275908233F2EC000E980A3 /* Discount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discount.swift; sourceTree = "<group>"; };
+		4827590B233F493500E980A3 /* DiscountTet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountTet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +92,7 @@
 			children = (
 				482758FD233E22AD00E980A3 /* Receipt.swift */,
 				48275904233E272900E980A3 /* LineFormatter.swift */,
+				48275908233F2EC000E980A3 /* Discount.swift */,
 				482758F9233E1D9900E980A3 /* Model */,
 				482758E4233E190600E980A3 /* main.swift */,
 			);
@@ -100,6 +106,7 @@
 				482758F7233E1CF000E980A3 /* ProductTest.swift */,
 				482758FF233E22C400E980A3 /* ReceiptTest.swift */,
 				48275902233E266D00E980A3 /* ForamtterTest.swift */,
+				4827590B233F493500E980A3 /* DiscountTet.swift */,
 				482758F3233E1C1F00E980A3 /* Info.plist */,
 			);
 			path = CashRegisterTest;
@@ -205,6 +212,7 @@
 				482758FE233E22AD00E980A3 /* Receipt.swift in Sources */,
 				482758E5233E190600E980A3 /* main.swift in Sources */,
 				48275907233E326400E980A3 /* LineFormatter.swift in Sources */,
+				48275909233F2EC000E980A3 /* Discount.swift in Sources */,
 				482758FB233E1DA400E980A3 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,6 +223,8 @@
 			files = (
 				482758F2233E1C1F00E980A3 /* CashRegisterTest.swift in Sources */,
 				482758F8233E1CF000E980A3 /* ProductTest.swift in Sources */,
+				4827590A233F308300E980A3 /* Discount.swift in Sources */,
+				4827590C233F493500E980A3 /* DiscountTet.swift in Sources */,
 				482758FC233E200600E980A3 /* Product.swift in Sources */,
 				48275900233E22C400E980A3 /* ReceiptTest.swift in Sources */,
 				48275903233E266D00E980A3 /* ForamtterTest.swift in Sources */,
