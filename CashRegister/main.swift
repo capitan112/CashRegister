@@ -21,6 +21,9 @@ products.append(cheese)
 products.append(pad)
 products.append(beer)
 
-let sut = Receipt(products: products)
+let formatter = LineFormatter()
+let discount = Discount()
+let tax = Tax()
+let sut = Receipt(products: products, formatter: formatter, discount: discount, tax: tax)
 
 sut.receiptOutput()

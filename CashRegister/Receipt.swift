@@ -12,14 +12,16 @@ class Receipt {
     var products: [Product]
     var formatter: LineFormatter!
     var discount: Discount!
+    var tax: Tax!
     let discountPadding = 44
     let totalWithoutTaxesPadding = 45
     let productPadding = 15
 
-    init(products: [Product]) {
+    init(products: [Product], formatter: LineFormatter, discount: Discount, tax: Tax   ) {
         self.products = products
-        formatter = LineFormatter()
-        discount = Discount()
+        self.formatter = formatter
+        self.discount = discount
+        self.tax = tax
     }
 
     func generateHeader() -> String {
