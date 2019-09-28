@@ -59,7 +59,7 @@ class ReceiptTest: XCTestCase {
     }
 
     func testReceiptGeneateFormatedHeaders() {
-        let header = receipt.generateHeader()
+        let header = receipt.headerOutput()
 
         let expectedHeader = "Label of item  Quantity       Unit price     Total price    \n-------------------------------------------------------"
         XCTAssertEqual(header, expectedHeader, "Header should be the same")
@@ -110,5 +110,12 @@ class ReceiptTest: XCTestCase {
         let expectedLine = "Tax 8.00%                                   +1476.00"
 
         XCTAssertEqual(receipt.taxOutput(), expectedLine, "Tax in receipt should be the same")
+    }
+    
+    func testTotalPriceInReceiptGenerateTotalPriceLine() {
+        receipt = generateReceiptWithProducts()
+        let expectedLine = "Total price                                  19926.00"
+
+        XCTAssertEqual(receipt.totalPriceOutput(), expectedLine, "Total price in receipt should be the same")
     }
 }

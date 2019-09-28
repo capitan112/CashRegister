@@ -94,9 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				482758FD233E22AD00E980A3 /* Receipt.swift */,
-				48275904233E272900E980A3 /* LineFormatter.swift */,
-				48275908233F2EC000E980A3 /* Discount.swift */,
-				485D1690233F657200653841 /* Tax.swift */,
+				485D1695233F9D8E00653841 /* Supporting files */,
 				482758F9233E1D9900E980A3 /* Model */,
 				482758E4233E190600E980A3 /* main.swift */,
 			);
@@ -122,6 +120,16 @@
 				482758FA233E1DA400E980A3 /* Product.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		485D1695233F9D8E00653841 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				48275904233E272900E980A3 /* LineFormatter.swift */,
+				48275908233F2EC000E980A3 /* Discount.swift */,
+				485D1690233F657200653841 /* Tax.swift */,
+			);
+			path = "Supporting files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
