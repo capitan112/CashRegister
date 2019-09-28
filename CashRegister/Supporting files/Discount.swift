@@ -14,7 +14,7 @@ protocol DiscountProtocol {
     func outputDiscountTitle(from totalCost: Double) -> String
 }
 
-class Discount:DiscountProtocol  {
+class Discount: DiscountProtocol {
     private enum Discounts: Double {
         case noDiscount = 0.00
         case three = 0.03

@@ -32,7 +32,7 @@ class Tax: TaxProtocol {
     func taxInPercentage() -> String {
         return "Tax " + String(format: "%.2f", stateTax.rawValue * 100) + "%"
     }
-    
+
     func currentTax() -> Double {
         return stateTax.rawValue
     }
