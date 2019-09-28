@@ -79,7 +79,7 @@ class ReceiptTest: XCTestCase {
     func testProductInReceiptShouldGenereatingLineByLine() {
         receipt = generateReceiptWithProducts(products: productsWith2500Amount())
 
-        let productsInRows = receipt.productsEncounter()
+        let productsInRows = receipt.productsListForming()
 
         let firstRowsOfProducts = "vine           4.0            5000.0         20000.0"
         let secondRowsOfProducts = "beer           1.0            500.0          500.0"

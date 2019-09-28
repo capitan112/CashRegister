@@ -26,4 +26,4 @@ let discount = Discount()
 let tax = Tax(stateTax: .NV)
 let sut = Receipt(products: products, formatter: formatter, discount: discount, tax: tax)
 
-sut.receiptOutput()
+sut.machineReceiptOutput()

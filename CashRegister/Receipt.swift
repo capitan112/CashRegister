@@ -75,7 +75,7 @@ class Receipt {
         return "-------------------------------------------------------"
     }
 
-    func productsEncounter() -> [String] {
+    func productsListForming() -> [String] {
         var productsInReceipt = [String]()
 
         for product in products {
@@ -119,10 +119,10 @@ class Receipt {
         return formatedTotalPriceTitle + String(format: "%.2f", totalPrice)
     }
 
-    func receiptOutput() {
+    func machineReceiptOutput() {
         print(headerOutput())
 
-        for row in productsEncounter() {
+        for row in productsListForming() {
             print(row)
         }
 
