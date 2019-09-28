@@ -23,7 +23,7 @@ products.append(beer)
 
 let formatter = LineFormatter()
 let discount = Discount()
-let tax = Tax(currentTax: .NV)
+let tax = Tax(stateTax: .NV)
 let sut = Receipt(products: products, formatter: formatter, discount: discount, tax: tax)
 
 sut.receiptOutput()

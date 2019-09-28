@@ -22,7 +22,7 @@ class ReceiptTest: XCTestCase {
     func generateEmptyReceipt() -> Receipt {
         let formatter = LineFormatter()
         let discount = Discount()
-        let tax = Tax(currentTax: .NV)
+        let tax = Tax(stateTax: .NV)
         let receipt = Receipt(products: [], formatter: formatter, discount: discount, tax: tax)
 
         return receipt
@@ -31,7 +31,7 @@ class ReceiptTest: XCTestCase {
     func generateReceiptWithProducts(products: [Product]) -> Receipt {
         let formatter = LineFormatter()
         let discount = Discount()
-        let tax = Tax(currentTax: .NV)
+        let tax = Tax(stateTax: .NV)
 
         return Receipt(products: products, formatter: formatter, discount: discount, tax: tax)
     }
@@ -56,7 +56,7 @@ class ReceiptTest: XCTestCase {
         let products = [vine, beer]
         let formatter = LineFormatter()
         let discount = Discount()
-        let tax = Tax(currentTax: .NV)
+        let tax = Tax(stateTax: .NV)
 
         receipt = Receipt(products: products, formatter: formatter, discount: discount, tax: tax)
 

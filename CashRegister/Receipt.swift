@@ -10,14 +10,14 @@ import Foundation
 
 class Receipt {
     var products: [Product]
-    var formatter: LineFormatter!
-    var discount: Discount!
-    var tax: Tax!
+    var formatter: LineFormatterProtocol!
+    var discount: DiscountProtocol!
+    var tax: TaxProtocol!
     let paddingWithSign = 44
     let longPadding = 45
     let productPadding = 15
 
-    init(products: [Product], formatter: LineFormatter, discount: Discount, tax: Tax) {
+    init(products: [Product], formatter: LineFormatterProtocol, discount: DiscountProtocol, tax: TaxProtocol) {
         self.products = products
         self.formatter = formatter
         self.discount = discount
@@ -53,7 +53,7 @@ class Receipt {
     func taxAmount() -> Double {
         let totalWithDiscount = totalWithoutTaxes() - amountOfDiscount()
 
-        return tax.currentTax.rawValue * totalWithDiscount
+        return tax.currentTax() * totalWithDiscount
     }
 
     // MARK: Generate part of receipt

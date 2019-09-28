@@ -8,7 +8,12 @@
 
 import Foundation
 
-class LineFormatter {
+protocol LineFormatterProtocol {
+    func addPaddingsAtEnd(to string: String, padding: Int) -> String
+    func formatPercentage(for amout: Double) -> String
+}
+
+class LineFormatter: LineFormatterProtocol {
     func addPaddingsAtEnd(to string: String, padding: Int) -> String {
         let formatedString = string.padding(toLength: padding, withPad: " ", startingAt: 0)
 

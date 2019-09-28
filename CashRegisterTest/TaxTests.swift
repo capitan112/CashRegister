@@ -12,7 +12,7 @@ class TaxTests: XCTestCase {
     var tax: Tax!
 
     override func setUp() {
-        tax = Tax(currentTax: .NV)
+        tax = Tax(stateTax: .NV)
     }
 
     override func tearDown() {
@@ -26,7 +26,7 @@ class TaxTests: XCTestCase {
     }
 
     func testTaxShoudReturnForamttedStringWithFourPersents() {
-        tax = Tax(currentTax: .AL)
+        tax = Tax(stateTax: .AL)
         let expectedTitle = "Tax 4.00%"
 
         XCTAssertEqual(tax.taxInPercentage(), expectedTitle, "Tax in persents value should be the same")

@@ -8,7 +8,13 @@
 
 import Foundation
 
-class Discount {
+protocol DiscountProtocol {
+    func percentageDiscount(from totalCost: Double) -> Double
+    func amountOfDiscount(from totalCost: Double) -> Double
+    func outputDiscountTitle(from totalCost: Double) -> String
+}
+
+class Discount:DiscountProtocol  {
     private enum Discounts: Double {
         case noDiscount = 0.00
         case three = 0.03

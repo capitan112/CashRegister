@@ -16,14 +16,24 @@ enum StateTax: Double {
     case CA = 0.0825
 }
 
-class Tax {
-    var currentTax: StateTax
+protocol TaxProtocol {
+    init(stateTax: StateTax)
+    func taxInPercentage() -> String
+    func currentTax() -> Double
+}
 
-    init(currentTax: StateTax) {
-        self.currentTax = currentTax
+class Tax: TaxProtocol {
+    private var stateTax: StateTax
+
+    required init(stateTax: StateTax) {
+        self.stateTax = stateTax
     }
 
     func taxInPercentage() -> String {
-        return "Tax " + String(format: "%.2f", currentTax.rawValue * 100) + "%"
+        return "Tax " + String(format: "%.2f", stateTax.rawValue * 100) + "%"
+    }
+    
+    func currentTax() -> Double {
+        return stateTax.rawValue
     }
 }
