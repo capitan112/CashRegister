@@ -28,15 +28,26 @@ class ReceiptTest: XCTestCase {
         return receipt
     }
 
-    func generateReceiptWithProducts() -> Receipt {
-        let vine = Product(name: "vine", quantity: 4, price: 5000)
-        let beer = Product(name: "beer", quantity: 1, price: 500)
-        let products = [vine, beer]
+    func generateReceiptWithProducts(products: [Product]) -> Receipt {
         let formatter = LineFormatter()
         let discount = Discount()
         let tax = Tax(currentTax: .NV)
 
         return Receipt(products: products, formatter: formatter, discount: discount, tax: tax)
+    }
+
+    func productsWith2500Amount() -> [Product] {
+        let vine = Product(name: "vine", quantity: 4, price: 5000)
+        let beer = Product(name: "beer", quantity: 1, price: 500)
+
+        return [vine, beer]
+    }
+
+    func productsWith2800Amount() -> [Product] {
+        let vine = Product(name: "vine", quantity: 4, price: 5000)
+        let beer = Product(name: "beer", quantity: 1, price: 800)
+
+        return [vine, beer]
     }
 
     func testReceiptInitWithProducts() {
@@ -65,15 +76,8 @@ class ReceiptTest: XCTestCase {
         XCTAssertEqual(header, expectedHeader, "Header should be the same")
     }
 
-    func productsInReceipe() -> [Product] {
-        let vine = Product(name: "vine", quantity: 4, price: 5000)
-        let beer = Product(name: "beer", quantity: 1, price: 500)
-
-        return [vine, beer]
-    }
-
     func testProductInReceiptShouldGenereatingLineByLine() {
-        receipt = generateReceiptWithProducts()
+        receipt = generateReceiptWithProducts(products: productsWith2500Amount())
 
         let productsInRows = receipt.productsEncounter()
 
@@ -85,36 +89,50 @@ class ReceiptTest: XCTestCase {
     }
 
     func testProductInReceiptGenerateTotalCostOfProductsWithoutTax() {
-        receipt = generateReceiptWithProducts()
+        receipt = generateReceiptWithProducts(products: productsWith2500Amount())
 
         XCTAssertEqual(receipt.totalWithoutTaxes(), 20500.00, "Rows of product in receipt should be the same")
     }
 
     func testProductInReceiptGenerateTotalCostOfProductsWithoutTaxLine() {
-        receipt = generateReceiptWithProducts()
+        receipt = generateReceiptWithProducts(products: productsWith2500Amount())
 
         let expectedLine = "Total without taxes                          20500.00"
 
         XCTAssertEqual(receipt.totalWithoutTaxesOutput(), expectedLine, "Total cost line in receipt should be the same")
     }
 
-    func testProductInReceiptGenerateDiscountLine() {
-        receipt = generateReceiptWithProducts()
+    func testProductInReceiptGenerateDiscountLineTenPersentage() {
+        receipt = generateReceiptWithProducts(products: productsWith2500Amount())
         let expectedLine = "Discount 10.00%                             -2050.00"
 
         XCTAssertEqual(receipt.discountOutput(), expectedLine, "Discount in receipt should be the same")
     }
 
-    func testTaxRowInReceiptGenerateTaxLine() {
-        receipt = generateReceiptWithProducts()
+    func testTaxRowInReceiptGenerateTaxLineWithEightPersentage() {
+        receipt = generateReceiptWithProducts(products: productsWith2500Amount())
         let expectedLine = "Tax 8.00%                                   +1476.00"
 
         XCTAssertEqual(receipt.taxOutput(), expectedLine, "Tax in receipt should be the same")
     }
-    
+
     func testTotalPriceInReceiptGenerateTotalPriceLine() {
-        receipt = generateReceiptWithProducts()
+        receipt = generateReceiptWithProducts(products: productsWith2500Amount())
         let expectedLine = "Total price                                  19926.00"
+
+        XCTAssertEqual(receipt.totalPriceOutput(), expectedLine, "Total price in receipt should be the same")
+    }
+
+    func testTotalPriceInReceiptGenerateTotalPriceLineForDifferentAmount() {
+        receipt = generateReceiptWithProducts(products: productsWith2800Amount())
+        let expectedLine = "Total price                                  20217.60"
+
+        XCTAssertEqual(receipt.totalPriceOutput(), expectedLine, "Total price in receipt should be the same")
+    }
+
+    func testTotalPriceInReceiptGenerateTotalPriceLineForZeroAmount() {
+        receipt = generateReceiptWithProducts(products: [])
+        let expectedLine = "Total price                                  0.00"
 
         XCTAssertEqual(receipt.totalPriceOutput(), expectedLine, "Total price in receipt should be the same")
     }

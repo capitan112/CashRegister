@@ -14,7 +14,7 @@ class Receipt {
     var discount: Discount!
     var tax: Tax!
     let paddingWithSign = 44
-    let totalWithoutTaxesPadding = 45
+    let longPadding = 45
     let productPadding = 15
 
     init(products: [Product], formatter: LineFormatter, discount: Discount, tax: Tax) {
@@ -25,6 +25,7 @@ class Receipt {
     }
 
     // MARK: Formatting
+
     fileprivate func addPaddings(to text: String, padding: Int) -> String {
         return formatter.addPaddingsAtEnd(to: text, padding: padding)
     }
@@ -33,31 +34,30 @@ class Receipt {
         return formatter.formatPercentage(for: number)
     }
 
-     // MARK: Calculating
-     func totalWithoutTaxes() -> Double {
-         var totalWithoutTaxes = 0.0
+    // MARK: Calculating
 
-         for product in products {
-             totalWithoutTaxes += product.summaryCost()
-         }
+    func totalWithoutTaxes() -> Double {
+        var totalWithoutTaxes = 0.0
 
-         return totalWithoutTaxes
-     }
+        for product in products {
+            totalWithoutTaxes += product.summaryCost()
+        }
 
-     func amountOfDiscount() -> Double {
-         return discount.amountOfDiscount(from: totalWithoutTaxes())
-     }
+        return totalWithoutTaxes
+    }
 
-    
+    func amountOfDiscount() -> Double {
+        return discount.amountOfDiscount(from: totalWithoutTaxes())
+    }
 
-     func taxAmount() -> Double {
-         let totalWithDiscount = totalWithoutTaxes() - amountOfDiscount()
+    func taxAmount() -> Double {
+        let totalWithDiscount = totalWithoutTaxes() - amountOfDiscount()
 
-         return tax.currentTax.rawValue * totalWithDiscount
-     }
-    
+        return tax.currentTax.rawValue * totalWithDiscount
+    }
+
     // MARK: Generate part of receipt
-    
+
     func headerOutput() -> String {
         var result: String = ""
         let headers = ["Label of item", "Quantity", "Unit price", "Total price"]
@@ -88,13 +88,13 @@ class Receipt {
 
         return productsInReceipt
     }
-    
+
     func totalWithoutTaxesOutput() -> String {
         let totalWithoutTaxesLine = "Total without taxes"
 
-       let formatedTotalWithoutTaxesLine = addPaddings(to: totalWithoutTaxesLine, padding: totalWithoutTaxesPadding)
+        let formatedTotalWithoutTaxesLine = addPaddings(to: totalWithoutTaxesLine, padding: longPadding)
 
-       return formatedTotalWithoutTaxesLine + formatPercentage(for: totalWithoutTaxes())
+        return formatedTotalWithoutTaxesLine + formatPercentage(for: totalWithoutTaxes())
     }
 
     func discountOutput() -> String {
@@ -110,6 +110,15 @@ class Receipt {
         return addPaddings(to: tax.taxInPercentage(), padding: paddingWithSign) + "+" + formatPercentage(for: taxAmount())
     }
 
+    func totalPriceOutput() -> String {
+        let totalPriceTitle = "Total price"
+
+        let formatedTotalPriceTitle = addPaddings(to: totalPriceTitle, padding: longPadding)
+        let totalPrice = totalWithoutTaxes() - amountOfDiscount() + taxAmount()
+
+        return formatedTotalPriceTitle + String(format: "%.2f", totalPrice)
+    }
+
     func receiptOutput() {
         print(headerOutput())
 
@@ -122,6 +131,6 @@ class Receipt {
         print(discountOutput())
         print(taxOutput())
         print(addSeparateLine())
+        print(totalPriceOutput())
     }
-
 }
