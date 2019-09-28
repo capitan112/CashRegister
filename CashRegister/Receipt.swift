@@ -11,10 +11,15 @@ import Foundation
 class Receipt {
     var products: [Product]
     var formatter: LineFormatter!
+    var discount: Discount!
+    let discountPadding = 44
+    let totalWithoutTaxesPadding = 45
+    let productPadding = 15
 
     init(products: [Product]) {
         self.products = products
         formatter = LineFormatter()
+        discount = Discount()
     }
 
     func generateHeader() -> String {
@@ -38,9 +43,9 @@ class Receipt {
         var productsInReceipt = [String]()
 
         for product in products {
-            let productName = formatter.addPaddingsAtEnd(to: product.name, padding: 15)
-            let productQuantity = formatter.addPaddingsAtEnd(to: String(product.quantity), padding: 15)
-            let productPrice = formatter.addPaddingsAtEnd(to: String(product.price), padding: 15)
+            let productName = formatter.addPaddingsAtEnd(to: product.name, padding: productPadding)
+            let productQuantity = formatter.addPaddingsAtEnd(to: String(product.quantity), padding: productPadding)
+            let productPrice = formatter.addPaddingsAtEnd(to: String(product.price), padding: productPadding)
 
             productsInReceipt.append(productName + productQuantity + productPrice + product.summaryCostInRow())
         }
@@ -57,6 +62,7 @@ class Receipt {
 
         print(addSeparateLine())
         print(totalWithoutTaxesOutput())
+        print(discountOutput())
     }
 
     func totalWithoutTaxes() -> Double {
@@ -72,13 +78,17 @@ class Receipt {
     func totalWithoutTaxesOutput() -> String {
         let totalWithoutTaxesLine = "Total without taxes"
 
-        let formatedTotalWithoutTaxesLine = formatter.addPaddingsAtEnd(to: totalWithoutTaxesLine, padding: 45)
+        let formatedTotalWithoutTaxesLine = formatter.addPaddingsAtEnd(to: totalWithoutTaxesLine, padding: totalWithoutTaxesPadding)
 
         return formatedTotalWithoutTaxesLine + String(format: "%.2f", totalWithoutTaxes())
     }
-    
-    func discountOutput() {
-        
+
+    func discountOutput() -> String {
+        let discountTitle = discount.outputDiscountTitle(from: totalWithoutTaxes())
+        let discountTitleWithPadding = formatter.addPaddingsAtEnd(to: discountTitle, padding: discountPadding)
+
+        let formatedDiscountAmount = String(format: "%.2f", discount.amountOfDiscount(from: totalWithoutTaxes()))
+
+        return discountTitleWithPadding + "-" + formatedDiscountAmount
     }
-    
 }

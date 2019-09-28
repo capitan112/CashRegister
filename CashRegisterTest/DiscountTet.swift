@@ -10,9 +10,8 @@
 import XCTest
 
 class DiscountTet: XCTestCase {
-
     var discount: Discount!
-    
+
     override func setUp() {
         discount = Discount()
     }
@@ -22,50 +21,58 @@ class DiscountTet: XCTestCase {
     }
 
     func testDiscountFromTotalCostShouldCalculating() {
-        let calculatedDiscount = discount.calculatingFrom(totalCost: 20500.0)
-        
-        XCTAssertEqual(calculatedDiscount.discount, 0.1, "Discount in rersents value should be the same")
-        XCTAssertEqual(calculatedDiscount.totalDiscount, 2050.00, "Total discount value should be the same")
+        let persentDiscount = discount.persentDiscount(from: 20500.0)
+        let amountOfDiscount = discount.amountOfDiscount(from: 20500.0)
+
+        XCTAssertEqual(persentDiscount, 0.1, "Discount in persents value should be the same")
+        XCTAssertEqual(amountOfDiscount, 2050.00, "amount of total discount value should be the same")
     }
-    
+
     func testDiscountPriceShouldBeZeroWhenItAbout1000() {
-        
-        let calculatedDiscount = discount.calculatingFrom(totalCost: 1000)
-        
-        XCTAssertEqual(calculatedDiscount.discount, 0.0, "Discount in rersents value should be the same")
-        XCTAssertEqual(calculatedDiscount.totalDiscount, 0.00, "Total discount value should be the same")
+        let persentDiscount = discount.persentDiscount(from: 1000)
+        let amountOfDiscount = discount.amountOfDiscount(from: 1000)
+
+        XCTAssertEqual(persentDiscount, 0.00, "Discount in persents value should be the same")
+        XCTAssertEqual(amountOfDiscount, 0.00, "amount of total discount value should be the same")
     }
-    
+
     func testDiscountPriceShouldBeThreeWhenItAfter1000() {
-          let calculatedDiscount = discount.calculatingFrom(totalCost: 1001)
-          XCTAssertEqual(calculatedDiscount.discount, 0.03, "Discount in rersents value should be the same")
-          XCTAssertEqual(calculatedDiscount.totalDiscount, 30.029999999999998, "Total discount value should be the same")
-      }
-    
+        let persentDiscount = discount.persentDiscount(from: 1001)
+        let amountOfDiscount = discount.amountOfDiscount(from: 1001)
+
+        XCTAssertEqual(persentDiscount, 0.03, "Discount in persents value should be the same")
+        XCTAssertEqual(amountOfDiscount, 30.029999999999998, "amount of total discount value should be the same")
+    }
+
     func testDiscountPriceShouldBeFiveWhenItAfter5000() {
-        
-        let calculatedDiscount = discount.calculatingFrom(totalCost: 5001)
-        XCTAssertEqual(calculatedDiscount.discount, 0.05, "Discount in rersents value should be the same")
-        XCTAssertEqual(calculatedDiscount.totalDiscount, 250.05, "Total discount value should be the same")
-     }
-    
-    
+        let persentDiscount = discount.persentDiscount(from: 5001)
+        let amountOfDiscount = discount.amountOfDiscount(from: 5001)
+
+        XCTAssertEqual(persentDiscount, 0.05, "Discount in persents value should be the same")
+        XCTAssertEqual(amountOfDiscount, 250.05, "amount of total discount value should be the same")
+    }
+
     func testDiscountPriceShouldBeSevenWhenItAfter7000() {
-        let calculatedDiscount = discount.calculatingFrom(totalCost: 7001)
-        XCTAssertEqual(calculatedDiscount.discount, 0.07, "Discount in rersents value should be the same")
-        XCTAssertEqual(calculatedDiscount.totalDiscount, 490.07000000000005, "Total discount value should be the same")
+        let persentDiscount = discount.persentDiscount(from: 7001)
+        let amountOfDiscount = discount.amountOfDiscount(from: 7001)
+
+        XCTAssertEqual(persentDiscount, 0.07, "Discount in persents value should be the same")
+        XCTAssertEqual(amountOfDiscount, 490.07000000000005, "amount of total discount value should be the same")
     }
 
     func testDiscountPriceShouldBeTenWhenItAfter10000() {
-        let calculatedDiscount = discount.calculatingFrom(totalCost: 10001)
-        XCTAssertEqual(calculatedDiscount.discount, 0.1, "Discount in rersents value should be the same")
-        XCTAssertEqual(calculatedDiscount.totalDiscount, 1000.1, "Total discount value should be the same")
+        let persentDiscount = discount.persentDiscount(from: 10001)
+        let amountOfDiscount = discount.amountOfDiscount(from: 10001)
+
+        XCTAssertEqual(persentDiscount, 0.1, "Discount in persents value should be the same")
+        XCTAssertEqual(amountOfDiscount, 1000.1, "amount of total discount value should be the same")
     }
 
     func testDiscountPriceShouldBeFifteenWhenItAfter50000() {
-        let calculatedDiscount = discount.calculatingFrom(totalCost: 50001)
-        XCTAssertEqual(calculatedDiscount.discount, 0.15, "Discount in rersents value should be the same")
-        XCTAssertEqual(calculatedDiscount.totalDiscount, 7500.15, "Total discount value should be the same")
-    }
+        let persentDiscount = discount.persentDiscount(from: 50001)
+        let amountOfDiscount = discount.amountOfDiscount(from: 50001)
 
+        XCTAssertEqual(persentDiscount, 0.15, "Discount in persents value should be the same")
+        XCTAssertEqual(amountOfDiscount, 7500.15, "amount of total discount value should be the same")
+    }
 }
