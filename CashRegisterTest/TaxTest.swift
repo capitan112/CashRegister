@@ -22,13 +22,13 @@ class TaxTests: XCTestCase {
     func testTaxShoudReturnForamttedStringWithEightPersents() {
         let expectedTitle = "Tax 8.00%"
 
-        XCTAssertEqual(tax.taxInPercentage(), expectedTitle, "Tax in persents value should be the same")
+        XCTAssertEqual(tax.taxPercentage(), expectedTitle, "Tax in persents value should be the same")
     }
 
     func testTaxShoudReturnForamttedStringWithFourPersents() {
         tax = Tax(stateTax: .AL)
         let expectedTitle = "Tax 4.00%"
 
-        XCTAssertEqual(tax.taxInPercentage(), expectedTitle, "Tax in persents value should be the same")
+        XCTAssertEqual(tax.taxPercentage(), expectedTitle, "Tax in persents value should be the same")
     }
 }

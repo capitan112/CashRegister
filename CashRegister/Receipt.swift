@@ -37,13 +37,7 @@ class Receipt {
     // MARK: Calculating
 
     func totalWithoutTaxes() -> Double {
-        var totalWithoutTaxes = 0.0
-
-        for product in products {
-            totalWithoutTaxes += product.summaryCost()
-        }
-
-        return totalWithoutTaxes
+        return products.reduce(0) { $0 + $1.summaryCost() }
     }
 
     func discountAmount() -> Double {
@@ -51,9 +45,11 @@ class Receipt {
     }
 
     func taxAmount() -> Double {
-        let totalWithDiscount = totalWithoutTaxes() - discountAmount()
+        return tax.taxAmount(of: totalWithoutTaxes() - discountAmount())
+    }
 
-        return tax.taxAmount(of: totalWithDiscount)
+    func taxPercentage() -> String {
+        return tax.taxPercentage()
     }
 
     // MARK: Generate part of receipt
@@ -65,8 +61,6 @@ class Receipt {
         for header in headers {
             result += addPaddings(to: header, padding: productPadding)
         }
-        result += "\n"
-        result += separateLineOutput()
 
         return result
     }
@@ -80,10 +74,11 @@ class Receipt {
 
         for product in products {
             let productName = addPaddings(to: product.name, padding: productPadding)
-            let productQuantity = addPaddings(to: String(product.quantity), padding: productPadding)
+            let productQuantity = formatPercentage(for: product.quantity)
+            let productQuantityFormated = addPaddings(to: String(productQuantity), padding: productPadding)
             let productPrice = addPaddings(to: String(product.price), padding: productPadding)
 
-            productsInReceipt.append(productName + productQuantity + productPrice + product.summaryCostInRow())
+            productsInReceipt.append(productName + productQuantityFormated + productPrice + product.summaryCostInRow())
         }
 
         return productsInReceipt
@@ -91,7 +86,6 @@ class Receipt {
 
     func totalWithoutTaxesOutput() -> String {
         let totalWithoutTaxesLine = "Total without taxes"
-
         let formatedTotalWithoutTaxesLine = addPaddings(to: totalWithoutTaxesLine, padding: longPadding)
 
         return formatedTotalWithoutTaxesLine + formatPercentage(for: totalWithoutTaxes())
@@ -100,19 +94,17 @@ class Receipt {
     func discountOutput() -> String {
         let discountTitle = discount.discountTitleOutput(from: totalWithoutTaxes())
         let discountTitleWithPadding = addPaddings(to: discountTitle, padding: paddingWithSign)
-
         let formatedDiscountAmount = formatPercentage(for: discountAmount())
 
         return discountTitleWithPadding + "-" + formatedDiscountAmount
     }
 
     func taxOutput() -> String {
-        return addPaddings(to: tax.taxInPercentage(), padding: paddingWithSign) + "+" + formatPercentage(for: taxAmount())
+        return addPaddings(to: taxPercentage(), padding: paddingWithSign) + "+" + formatPercentage(for: taxAmount())
     }
 
     func totalPriceOutput() -> String {
         let totalPriceTitle = "Total price"
-
         let formatedTotalPriceTitle = addPaddings(to: totalPriceTitle, padding: longPadding)
         let totalPrice = totalWithoutTaxes() - discountAmount() + taxAmount()
 
@@ -121,6 +113,7 @@ class Receipt {
 
     func machineReceiptOutput() {
         print(headerOutput())
+        print(separateLineOutput())
 
         for row in productsListForming() {
             print(row)

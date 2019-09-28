@@ -72,7 +72,7 @@ class ReceiptTest: XCTestCase {
     func testReceiptGeneateFormatedHeaders() {
         let header = receipt.headerOutput()
 
-        let expectedHeader = "Label of item  Quantity       Unit price     Total price    \n-------------------------------------------------------"
+        let expectedHeader = "Label of item  Quantity       Unit price     Total price    "
         XCTAssertEqual(header, expectedHeader, "Header should be the same")
     }
 
@@ -81,8 +81,8 @@ class ReceiptTest: XCTestCase {
 
         let productsInRows = receipt.productsListForming()
 
-        let firstRowsOfProducts = "vine           4.0            5000.0         20000.0"
-        let secondRowsOfProducts = "beer           1.0            500.0          500.0"
+        let firstRowsOfProducts = "vine           4.00           5000.0         20000.0"
+        let secondRowsOfProducts = "beer           1.00           500.0          500.0"
 
         XCTAssertEqual(productsInRows[0], firstRowsOfProducts, "Rows of product in receipt should be the same")
         XCTAssertEqual(productsInRows[1], secondRowsOfProducts, "Rows of product in receipt should be the same")

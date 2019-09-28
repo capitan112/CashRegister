@@ -18,7 +18,7 @@ enum StateTax: Double {
 
 protocol TaxProtocol {
     init(stateTax: StateTax)
-    func taxInPercentage() -> String
+    func taxPercentage() -> String
     func currentTax() -> Double
     func taxAmount(of number: Double) -> Double
 }
@@ -30,7 +30,7 @@ class Tax: TaxProtocol {
         self.stateTax = stateTax
     }
 
-    func taxInPercentage() -> String {
+    func taxPercentage() -> String {
         return "Tax " + String(format: "%.2f", stateTax.rawValue * 100) + "%"
     }
 
