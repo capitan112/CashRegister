@@ -46,12 +46,12 @@ class Receipt {
         return totalWithoutTaxes
     }
 
-    func amountOfDiscount() -> Double {
+    func discountAmount() -> Double {
         return discount.amountOfDiscount(from: totalWithoutTaxes())
     }
 
     func taxAmount() -> Double {
-        let totalWithDiscount = totalWithoutTaxes() - amountOfDiscount()
+        let totalWithDiscount = totalWithoutTaxes() - discountAmount()
 
         return tax.currentTax() * totalWithDiscount
     }
@@ -66,12 +66,12 @@ class Receipt {
             result += addPaddings(to: header, padding: productPadding)
         }
         result += "\n"
-        result += addSeparateLine()
+        result += separateLineOutput()
 
         return result
     }
 
-    func addSeparateLine() -> String {
+    func separateLineOutput() -> String {
         return "-------------------------------------------------------"
     }
 
@@ -98,10 +98,10 @@ class Receipt {
     }
 
     func discountOutput() -> String {
-        let discountTitle = discount.outputDiscountTitle(from: totalWithoutTaxes())
+        let discountTitle = discount.discountTitleOutput(from: totalWithoutTaxes())
         let discountTitleWithPadding = addPaddings(to: discountTitle, padding: paddingWithSign)
 
-        let formatedDiscountAmount = formatPercentage(for: amountOfDiscount())
+        let formatedDiscountAmount = formatPercentage(for: discountAmount())
 
         return discountTitleWithPadding + "-" + formatedDiscountAmount
     }
@@ -114,7 +114,7 @@ class Receipt {
         let totalPriceTitle = "Total price"
 
         let formatedTotalPriceTitle = addPaddings(to: totalPriceTitle, padding: longPadding)
-        let totalPrice = totalWithoutTaxes() - amountOfDiscount() + taxAmount()
+        let totalPrice = totalWithoutTaxes() - discountAmount() + taxAmount()
 
         return formatedTotalPriceTitle + String(format: "%.2f", totalPrice)
     }
@@ -126,11 +126,11 @@ class Receipt {
             print(row)
         }
 
-        print(addSeparateLine())
+        print(separateLineOutput())
         print(totalWithoutTaxesOutput())
         print(discountOutput())
         print(taxOutput())
-        print(addSeparateLine())
+        print(separateLineOutput())
         print(totalPriceOutput())
     }
 }

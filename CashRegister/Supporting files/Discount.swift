@@ -11,7 +11,7 @@ import Foundation
 protocol DiscountProtocol {
     func percentageDiscount(from totalCost: Double) -> Double
     func amountOfDiscount(from totalCost: Double) -> Double
-    func outputDiscountTitle(from totalCost: Double) -> String
+    func discountTitleOutput(from totalCost: Double) -> String
 }
 
 class Discount: DiscountProtocol {
@@ -53,7 +53,7 @@ class Discount: DiscountProtocol {
         return discount * totalCost
     }
 
-    func outputDiscountTitle(from totalCost: Double) -> String {
+    func discountTitleOutput(from totalCost: Double) -> String {
         let discountInPersent = percentageDiscount(from: totalCost) * 100
         let formatedDiscountInPersent = String(format: "%.2f", discountInPersent) + "%"
         let discountTitle = "Discount " + formatedDiscountInPersent

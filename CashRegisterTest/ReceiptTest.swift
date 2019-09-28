@@ -66,7 +66,7 @@ class ReceiptTest: XCTestCase {
     func testReceipShoudGenerateSeparateLine() {
         let expectedLine = "-------------------------------------------------------"
 
-        XCTAssertEqual(receipt.addSeparateLine(), expectedLine, "Line should be the same")
+        XCTAssertEqual(receipt.separateLineOutput(), expectedLine, "Line should be the same")
     }
 
     func testReceiptGeneateFormatedHeaders() {
