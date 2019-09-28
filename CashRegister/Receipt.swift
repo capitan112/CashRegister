@@ -91,4 +91,9 @@ class Receipt {
 
         return discountTitleWithPadding + "-" + formatedDiscountAmount
     }
+    
+    func taxOutput() -> String {
+        
+        return ""
+    }
 }
