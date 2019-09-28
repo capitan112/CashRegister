@@ -22,31 +22,31 @@ class ReceiptTest: XCTestCase {
     func generateEmptyReceipt() -> Receipt {
         let formatter = LineFormatter()
         let discount = Discount()
-        let tax = Tax()
+        let tax = Tax(currentTax: .NV)
         let receipt = Receipt(products: [], formatter: formatter, discount: discount, tax: tax)
-        
+
         return receipt
     }
-    
+
     func generateReceiptWithProducts() -> Receipt {
         let vine = Product(name: "vine", quantity: 4, price: 5000)
         let beer = Product(name: "beer", quantity: 1, price: 500)
         let products = [vine, beer]
         let formatter = LineFormatter()
         let discount = Discount()
-        let tax = Tax()
-     
+        let tax = Tax(currentTax: .NV)
+
         return Receipt(products: products, formatter: formatter, discount: discount, tax: tax)
     }
-    
+
     func testReceiptInitWithProducts() {
         let vine = Product(name: "vine", quantity: 4, price: 5000)
         let beer = Product(name: "beer", quantity: 2, price: 200)
         let products = [vine, beer]
         let formatter = LineFormatter()
         let discount = Discount()
-        let tax = Tax()
-        
+        let tax = Tax(currentTax: .NV)
+
         receipt = Receipt(products: products, formatter: formatter, discount: discount, tax: tax)
 
         XCTAssertEqual(products[0].name, receipt.products[0].name, "Names should be the same")
@@ -104,10 +104,10 @@ class ReceiptTest: XCTestCase {
 
         XCTAssertEqual(receipt.discountOutput(), expectedLine, "Discount in receipt should be the same")
     }
-    
+
     func testTaxRowInReceiptGenerateTaxLine() {
         receipt = generateReceiptWithProducts()
-        let expectedLine = "Tax 4.00%                                   +738.00"
+        let expectedLine = "Tax 8.00%                                   +1476.00"
 
         XCTAssertEqual(receipt.taxOutput(), expectedLine, "Tax in receipt should be the same")
     }

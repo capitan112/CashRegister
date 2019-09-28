@@ -14,4 +14,8 @@ class LineFormatter {
 
         return formatedString
     }
+
+    func formatPercentage(for amout: Double) -> String {
+        return String(format: "%.2f", amout)
+    }
 }

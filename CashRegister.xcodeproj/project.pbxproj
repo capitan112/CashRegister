@@ -22,6 +22,7 @@
 		4827590C233F493500E980A3 /* DiscountTet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4827590B233F493500E980A3 /* DiscountTet.swift */; };
 		485D1691233F657200653841 /* Tax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485D1690233F657200653841 /* Tax.swift */; };
 		485D1692233F675400653841 /* Tax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485D1690233F657200653841 /* Tax.swift */; };
+		485D1694233F920600653841 /* TaxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485D1693233F920600653841 /* TaxTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,6 +51,7 @@
 		48275908233F2EC000E980A3 /* Discount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discount.swift; sourceTree = "<group>"; };
 		4827590B233F493500E980A3 /* DiscountTet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountTet.swift; sourceTree = "<group>"; };
 		485D1690233F657200653841 /* Tax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tax.swift; sourceTree = "<group>"; };
+		485D1693233F920600653841 /* TaxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				482758FF233E22C400E980A3 /* ReceiptTest.swift */,
 				48275902233E266D00E980A3 /* ForamtterTest.swift */,
 				4827590B233F493500E980A3 /* DiscountTet.swift */,
+				485D1693233F920600653841 /* TaxTests.swift */,
 				482758F3233E1C1F00E980A3 /* Info.plist */,
 			);
 			path = CashRegisterTest;
@@ -230,6 +233,7 @@
 				48275900233E22C400E980A3 /* ReceiptTest.swift in Sources */,
 				48275903233E266D00E980A3 /* ForamtterTest.swift in Sources */,
 				485D1692233F675400653841 /* Tax.swift in Sources */,
+				485D1694233F920600653841 /* TaxTests.swift in Sources */,
 				48275901233E22CD00E980A3 /* Receipt.swift in Sources */,
 				48275906233E274B00E980A3 /* LineFormatter.swift in Sources */,
 			);

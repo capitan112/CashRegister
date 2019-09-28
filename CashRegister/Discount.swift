@@ -9,7 +9,6 @@
 import Foundation
 
 class Discount {
-    
     private enum Discounts: Double {
         case noDiscount = 0.00
         case three = 0.03
@@ -19,7 +18,7 @@ class Discount {
         case fifteen = 0.15
     }
 
-    func persentDiscount(from totalCost: Double) -> Double {
+    func percentageDiscount(from totalCost: Double) -> Double {
         var discountRate: Double = Discounts.noDiscount.rawValue
 
         switch totalCost {
@@ -43,13 +42,13 @@ class Discount {
     }
 
     func amountOfDiscount(from totalCost: Double) -> Double {
-        let discount = persentDiscount(from: totalCost)
+        let discount = percentageDiscount(from: totalCost)
 
         return discount * totalCost
     }
 
     func outputDiscountTitle(from totalCost: Double) -> String {
-        let discountInPersent = persentDiscount(from: totalCost) * 100
+        let discountInPersent = percentageDiscount(from: totalCost) * 100
         let formatedDiscountInPersent = String(format: "%.2f", discountInPersent) + "%"
         let discountTitle = "Discount " + formatedDiscountInPersent
 
