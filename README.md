@@ -1,6 +1,6 @@
 CashRegister
 
-Swift project Elephant Carpaccio exercise
+Swift project exercise
 
 - Added Unit test using TDD.
 - Using Git
