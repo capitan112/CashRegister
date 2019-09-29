@@ -10,7 +10,7 @@ import Foundation
 
 protocol LineFormatterProtocol {
     func addPaddingsAtEnd(to string: String, padding: Int) -> String
-    func formatPercentage(for amout: Double) -> String
+    func formatTwoDigits(for amout: Double) -> String
 }
 
 class LineFormatter: LineFormatterProtocol {
@@ -20,7 +20,7 @@ class LineFormatter: LineFormatterProtocol {
         return formatedString
     }
 
-    func formatPercentage(for amout: Double) -> String {
+    func formatTwoDigits(for amout: Double) -> String {
         return String(format: "%.2f", amout)
     }
 }
